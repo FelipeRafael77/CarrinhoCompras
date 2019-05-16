@@ -2,17 +2,18 @@
 package pojo;
 
 public class Calcados {
-    public String codigo;
-    public String tipo;
-    public String marca;
-    public String tamanho;
-    public String quantidade;
+    private String codigo;
+    private String tipo;
+    private String marca;
+    private String tamanho;
+    private int quantidade;
+    private double preco;
 
-    public String getQuantidade() {
+    public int getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(String quantidade) {
+    public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
 
@@ -48,6 +49,13 @@ public class Calcados {
         this.tamanho = tamanho;
     }
 
-    
+    public double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
+
     
 }
