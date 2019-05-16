@@ -91,9 +91,8 @@ public class MenuCarrinho {
         System.out.println(item);
         for (int i = 0; i < lista.size(); i++) {
             Calcados calc = lista.get(i);
-
-            if (calc.getCodigo().equals(item)) {
-
+            if (Integer.parseInt(calc.getCodigo()) == item) {
+                
                 lista.remove(calc);
                 break;
             }
