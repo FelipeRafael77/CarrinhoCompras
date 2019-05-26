@@ -1,13 +1,29 @@
-
 package pojo;
 
-public class Calcados {
+import java.util.Observable;
+
+public class Calcados extends Observable{
     private String codigo;
     private String tipo;
     private String marca;
     private String tamanho;
     private int quantidade;
     private double preco;
+    private String atualizaCarrinho;
+
+    public Calcados(String atualizaCarrinho) {
+        this.atualizaCarrinho = atualizaCarrinho;
+    }
+
+    public String getAtualizaCarrinho() {
+        return atualizaCarrinho;
+    }
+
+    public void setAtualizaCarrinho(String atualizaCarrinho) {
+        this.atualizaCarrinho = atualizaCarrinho;
+        setChanged();
+        notifyObservers();
+    }
 
     public int getQuantidade() {
         return quantidade;

@@ -1,12 +1,14 @@
 package menucarrinho;
 
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Scanner;
 import pojo.Calcados;
-import util.Facade;
+import util.Biblioteca;
 
 // ---------------- MENU PRINCIPAL -----------------------
-public class MenuCarrinho {
+public class MenuCarrinho implements Observer{
 
     public static int opcao;
 
@@ -15,12 +17,13 @@ public class MenuCarrinho {
     public static void menu() {
 
         System.out.println("\tCompras");
-        System.out.println("1. Comprar Produto");
-        System.out.println("2. Consultar carrinho");
-        System.out.println("3. Consultar o valor total");
-        System.out.println("4. Pagamento");
-        System.out.println("5. Remover item do carrinho");
-        System.out.println("6. Sair");
+        System.out.println("1. Calçados Disponíveis");
+        System.out.println("2. Comprar Produto");
+        System.out.println("3. Consultar carrinho");
+        System.out.println("4. Consultar o valor total");
+        System.out.println("5. Pagamento");
+        System.out.println("6. Remover item do carrinho");
+        System.out.println("7. Sair");
         System.out.println("Opcao:");
 
     }
@@ -29,7 +32,7 @@ public class MenuCarrinho {
     public static void compraProduto() {
         do {
             Calcados calc = new Calcados();
-            Facade fac = new Facade();
+            Biblioteca fac = new Biblioteca();
             Scanner entrada = new Scanner(System.in);
             System.out.println("\nCompra de itens");
             System.out.println("Código: ");
@@ -56,10 +59,15 @@ public class MenuCarrinho {
             System.out.println("Deseja realizar mais uma compra? Digite 1 para SIM e 2 para NÃO");
             opcao = entrada.nextInt();
 
-        } while (opcao == 1);
+        } while (opcao == 2);
     }
-// ------------------------ METODO DE CONSULTA ----------------------------------    
-
+  
+    public static void pesquisarItens(){
+        
+    }
+    
+// ------------------------ METODO DE CONSULTA ---------------------------------
+    
     public static void consultaCarrinho() {
 
         for (int x = 0; x < lista.size(); x++) {
@@ -102,7 +110,7 @@ public class MenuCarrinho {
     //Calcula o valor unitário * a quantidade.
 
     public static void valorTotal() {
-        Facade facade = new Facade();
+        Biblioteca facade = new Biblioteca();
         double total = 0.0;
         for (Calcados calcado : lista) {
             total += calcado.getPreco() * calcado.getQuantidade();
@@ -114,7 +122,7 @@ public class MenuCarrinho {
     public static void pagar() {
         double valorPago = 0.0;
         Scanner pagar = new Scanner(System.in);
-        Facade facade = new Facade();
+        Biblioteca facade = new Biblioteca();
 
         System.out.println("Quanto voce deseja pagar?");
         valorPago = pagar.nextDouble();
@@ -131,6 +139,11 @@ public class MenuCarrinho {
     public static void main(String[] args) {
         int opcao;
         Scanner entrada = new Scanner(System.in);
+        Calcados observable = new Calcados(null);
+        MenuCarrinho observer = new MenuCarrinho();
+        observable.addObserver(observer);
+        observable.setAtualizaCarrinho("Bright and sunny...Let's play cricket!! "); //vê o que você entende que poosa ser colocado aqui.
+        observable.setAtualizaCarrinho("Raining Heavily!..Let's have hot Pakodas!!");// e aqui também.
 
         do {
             menu();
@@ -138,28 +151,36 @@ public class MenuCarrinho {
 
             switch (opcao) {
                 case 1:
+                    
+                    break;
+                case 2:
                     compraProduto();
                     break;
-
-                case 2:
+                case 3:
                     consultaCarrinho();
                     break;
-                case 3:
+                case 4:
                     valorTotal();
                     break;
-                case 4:
+                case 5:
                     pagar();
                     break;
-                case 5:
+                case 6:
                     removerItem();
                     break;
-                case 6:
+                case 7:
                     saidaCarrinho();
                     break;
-
+                
                 default:
                     System.out.println("Opção inválida!");
             }
         } while (opcao != 0);
+    }
+
+    @Override
+    public void update(Observable o, Object arg) { 
+        atualizaCarrinho = (Calcados) o;
+        System.out.println("O produto inserido/excluído foi: " + atualizaCarrinho.getAtualizaCarrinho());
     }
 }

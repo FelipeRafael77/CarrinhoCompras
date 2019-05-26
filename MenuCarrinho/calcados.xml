@@ -4,59 +4,69 @@
 		<marca>moleca</marca>
 		<tamanho>36</tamanho>
 		<quantidade>5</quantidade>
+		<preco>100.0</preco>
 	</calcado>
 	<calcado id="2">
 		<tipo>sapato</tipo>
 		<marca>rafarillo</marca>
 		<tamanho>40</tamanho>
 		<quantidade>15</quantidade>
+		<preco>120.0</preco>
 	</calcado>
 	<calcado id="3">
 		<tipo>tenis</tipo>
 		<marca>adidas</marca>
 		<tamanho>37</tamanho>
 		<quantidade>20</quantidade>
+		<preco>250.0</preco>
 	</calcado>
 	<calcado id="4">
 		<tipo>bota</tipo>
 		<marca>texana</marca>
 		<tamanho>36</tamanho>
 		<quantidade>10</quantidade>
+		<preco>180.0</preco>
 	</calcado>
 	<calcado id="5">
-		<tipo>sapato</tipo>
-		<marca>rafarillo</marca>
+		<tipo>bota</tipo>
+		<marca>caterpillar</marca>
 		<tamanho>40</tamanho>
-		<quantidade>15</quantidade>
+		<quantidade>20</quantidade>
+		<preco>200.0</preco>
 	</calcado>
 	<calcado id="6">
 		<tipo>chuteira</tipo>
 		<marca>umbro</marca>
 		<tamanho>41</tamanho>
 		<quantidade>20</quantidade>
+		<preco>270.0</preco>
 	</calcado>
 	<calcado id="7">
 		<tipo>tenis futsal</tipo>
 		<marca>nike</marca>
 		<tamanho>40</tamanho>
 		<quantidade>7</quantidade>
+		<preco>300.0</preco>
 	</calcado>
 	<calcado id="8">
 		<tipo>chinelo</tipo>
 		<marca>havaianas</marca>
 		<tamanho>38</tamanho>
 		<quantidade>10</quantidade>
+		<preco>50.0</preco>
 	</calcado>
 	<calcado id="9">
 		<tipo>sapatenis</tipo>
 		<marca>lacoste</marca>
 		<tamanho>40</tamanho>
 		<quantidade>35</quantidade>
+		<preco>220.0</preco>
 	</calcado>
 	<calcado id="10">
 		<tipo>salto</tipo>
 		<marca>beira rio</marca>
 		<tamanho>40</tamanho>
 		<quantidade>25</quantidade>
+		<preco>320.0</preco>
 	</calcado>
 </cadastrados>
