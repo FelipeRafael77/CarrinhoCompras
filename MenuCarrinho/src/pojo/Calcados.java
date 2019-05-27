@@ -9,18 +9,22 @@ public class Calcados extends Observable{
     private String tamanho;
     private int quantidade;
     private double preco;
-    private String atualizaCarrinho;
+    private String atualiza;
 
-    public Calcados(String atualizaCarrinho) {
-        this.atualizaCarrinho = atualizaCarrinho;
+    public Calcados(String atualiza) {
+        this.atualiza = atualiza;
     }
 
-    public String getAtualizaCarrinho() {
-        return atualizaCarrinho;
+    public Calcados() {
+       return;
     }
 
-    public void setAtualizaCarrinho(String atualizaCarrinho) {
-        this.atualizaCarrinho = atualizaCarrinho;
+    public String getAtualiza() {
+        return atualiza;
+    }
+
+    public void setAtualiza(String atualiza) {
+        this.atualiza = atualiza;
         setChanged();
         notifyObservers();
     }

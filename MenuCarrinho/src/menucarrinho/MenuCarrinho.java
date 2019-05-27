@@ -6,24 +6,26 @@ import java.util.Observer;
 import java.util.Scanner;
 import pojo.Calcados;
 import util.Biblioteca;
+import util.Facade;
 
 // ---------------- MENU PRINCIPAL -----------------------
 public class MenuCarrinho implements Observer{
 
     public static int opcao;
-
+    
+    public Calcados atualizaCarrinho;
+    
     public static ArrayList<Calcados> lista = new ArrayList();
 
     public static void menu() {
 
         System.out.println("\tCompras");
-        System.out.println("1. Calçados Disponíveis");
-        System.out.println("2. Comprar Produto");
-        System.out.println("3. Consultar carrinho");
-        System.out.println("4. Consultar o valor total");
-        System.out.println("5. Pagamento");
-        System.out.println("6. Remover item do carrinho");
-        System.out.println("7. Sair");
+        System.out.println("1. Comprar Produto");
+        System.out.println("2. Consultar carrinho");
+        System.out.println("3. Consultar o valor total");
+        System.out.println("4. Pagamento");
+        System.out.println("5. Remover item do carrinho");
+        System.out.println("6. Sair");
         System.out.println("Opcao:");
 
     }
@@ -32,7 +34,7 @@ public class MenuCarrinho implements Observer{
     public static void compraProduto() {
         do {
             Calcados calc = new Calcados();
-            Biblioteca fac = new Biblioteca();
+            Biblioteca b = new Biblioteca();
             Scanner entrada = new Scanner(System.in);
             System.out.println("\nCompra de itens");
             System.out.println("Código: ");
@@ -59,11 +61,7 @@ public class MenuCarrinho implements Observer{
             System.out.println("Deseja realizar mais uma compra? Digite 1 para SIM e 2 para NÃO");
             opcao = entrada.nextInt();
 
-        } while (opcao == 2);
-    }
-  
-    public static void pesquisarItens(){
-        
+        } while (opcao == 1);
     }
     
 // ------------------------ METODO DE CONSULTA ---------------------------------
@@ -110,23 +108,23 @@ public class MenuCarrinho implements Observer{
     //Calcula o valor unitário * a quantidade.
 
     public static void valorTotal() {
-        Biblioteca facade = new Biblioteca();
+        Facade f = new Facade();
         double total = 0.0;
         for (Calcados calcado : lista) {
             total += calcado.getPreco() * calcado.getQuantidade();
         }
-        facade.cobrar(total);
+        f.cobrar(total);
     }
 
 //----------------------------------- METODO PAGAMENTO -------------------------   
     public static void pagar() {
         double valorPago = 0.0;
         Scanner pagar = new Scanner(System.in);
-        Biblioteca facade = new Biblioteca();
+        Facade f = new Facade();
 
         System.out.println("Quanto voce deseja pagar?");
         valorPago = pagar.nextDouble();
-        facade.realizarPagamento(valorPago);
+        f.realizarPagamento(valorPago);
     }
 // ------------------------- METODO SAIR ----------------------------------------    
 
@@ -142,8 +140,8 @@ public class MenuCarrinho implements Observer{
         Calcados observable = new Calcados(null);
         MenuCarrinho observer = new MenuCarrinho();
         observable.addObserver(observer);
-        observable.setAtualizaCarrinho("Bright and sunny...Let's play cricket!! "); //vê o que você entende que poosa ser colocado aqui.
-        observable.setAtualizaCarrinho("Raining Heavily!..Let's have hot Pakodas!!");// e aqui também.
+        observable.setAtualiza("Produto Incluído!"); 
+        observable.setAtualiza("Produto Excluído!");
 
         do {
             menu();
@@ -151,24 +149,21 @@ public class MenuCarrinho implements Observer{
 
             switch (opcao) {
                 case 1:
-                    
-                    break;
-                case 2:
                     compraProduto();
                     break;
-                case 3:
+                case 2:
                     consultaCarrinho();
                     break;
-                case 4:
+                case 3:
                     valorTotal();
                     break;
-                case 5:
+                case 4:
                     pagar();
                     break;
-                case 6:
+                case 5:
                     removerItem();
                     break;
-                case 7:
+                case 6:
                     saidaCarrinho();
                     break;
                 
@@ -181,6 +176,6 @@ public class MenuCarrinho implements Observer{
     @Override
     public void update(Observable o, Object arg) { 
         atualizaCarrinho = (Calcados) o;
-        System.out.println("O produto inserido/excluído foi: " + atualizaCarrinho.getAtualizaCarrinho());
+        System.out.println("O produto inserido/excluído foi: " + atualizaCarrinho.getAtualiza());
     }
 }
